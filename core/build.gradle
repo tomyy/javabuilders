@@ -3,3 +3,7 @@ dependencies {
     compile "org.yaml:snakeyaml:1.14"
     compile "commons-lang:commons-lang:2.6"
 }
+
+test {
+    systemProperty 'user.language', 'en'
+}
