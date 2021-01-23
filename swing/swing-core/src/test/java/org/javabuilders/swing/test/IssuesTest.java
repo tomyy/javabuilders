@@ -235,9 +235,9 @@ public class IssuesTest {
 	public void issue48_customValidator() {
 
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JTextField(name=text)");
+			____("- JTextField(name=text)");
 			validate();
-			___("- text.text: {mandatory: true}");
+			____("- text.text: {mandatory: true}");
 			
 		}}.build(this);
 		
@@ -286,9 +286,9 @@ public class IssuesTest {
 	public void issue48_customValidator2() {
 
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JTextField(name=text)");
+			____("- JTextField(name=text)");
 			validate();
-			___("- text.text: {mandatory: true}");
+			____("- text.text: {mandatory: true}");
 			
 		}}.build(this);
 
@@ -326,7 +326,7 @@ public class IssuesTest {
 	@Test
 	public void issue52_onSelectionForJList() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JList(name=list,onSelection=jlist_selection)");
+			____("- JList(name=list,onSelection=jlist_selection)");
 		}}.build(this);
 
 		JList list = (JList) r.get("list");
@@ -337,7 +337,7 @@ public class IssuesTest {
 	@Test
 	public void issue52_onSelectionForJListMultiple() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JList(name=list,onSelection=[jlist_selection,jlist_selection2])");
+			____("- JList(name=list,onSelection=[jlist_selection,jlist_selection2])");
 		}}.build(this);
 
 		JList list = (JList) r.get("list");
@@ -348,7 +348,7 @@ public class IssuesTest {
 	@Test(expected=BuildException.class)
 	public void issue52_onSelectionForJListInvalid() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JList(name=list,onSelection=jlist2_selection)"); //wrong method name
+			____("- JList(name=list,onSelection=jlist2_selection)"); //wrong method name
 		}}.build(this);
 
 		JList list = (JList) r.get("list");
@@ -369,7 +369,7 @@ public class IssuesTest {
 	public void issue53_noActionsUnderJPanel() {
 
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- Action(name=text)");
+			____("- Action(name=text)");
 		}}.build(this);
 
 	}
@@ -385,10 +385,10 @@ public class IssuesTest {
 		JPanel test = new JPanel();
 		
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JSpinner(name=spinner)");
-			___("- MigLayout: |");
-			___("    [grow]");
-			___("    spinner");
+			____("- JSpinner(name=spinner)");
+			____("- MigLayout: |");
+			____("    [grow]");
+			____("    spinner");
 		}}.build(test);
 		
 		JPanel panel = (JPanel) r.getRoot();
@@ -403,15 +403,15 @@ public class IssuesTest {
 	@Test
 	public void issue58_mnemonicsAndAcceleratorsOnAbstractButtons() {
 		BuildResult r = new SwingYamlBuilder("JFrame:") {{
-			___("- JMenuBar:");
-			_____("- JMenuItem(name=menu1,text='&New...\\tCtrl+N')");
-			_____("- JMenuItem(name=menu2,text='&New')");
-			_____("- JMenuItem(name=menu3,text='New...\\tCtrl+N')");
-			_____("- JMenuItem(name=menu4,text='New')");
-			_____("- JMenuItem(name=menu5,text='New...\\tF1')");
-			___("- JPanel:");
-			_____("- JButton(name=button1,text='New')");
-			_____("- JButton(name=button2,text='&New')");
+			____("- JMenuBar:");
+			______("- JMenuItem(name=menu1,text='&New...\\tCtrl+N')");
+			______("- JMenuItem(name=menu2,text='&New')");
+			______("- JMenuItem(name=menu3,text='New...\\tCtrl+N')");
+			______("- JMenuItem(name=menu4,text='New')");
+			______("- JMenuItem(name=menu5,text='New...\\tF1')");
+			____("- JPanel:");
+			______("- JButton(name=button1,text='New')");
+			______("- JButton(name=button2,text='&New')");
 		}}.build(this);
 		
 		KeyStroke ctrlN = KeyStroke.getKeyStroke(KeyEvent.VK_N, InputEvent.CTRL_MASK);
@@ -462,9 +462,9 @@ public class IssuesTest {
 	@Test
 	public void issue62_JInternalFrame() {
 		BuildResult r = new SwingYamlBuilder("JFrame(name=main,title=Main Frame):") {{
-			___("- JDesktopPane(name=desktop):");
-			_____("- JInternalFrame(name=frame1,title='Frame 1')");
-			_____("- JInternalFrame(name=frame2,title='Frame 2')");
+			____("- JDesktopPane(name=desktop):");
+			______("- JInternalFrame(name=frame1,title='Frame 1')");
+			______("- JInternalFrame(name=frame2,title='Frame 2')");
 		}}.build(this);
 		
 		JFrame f = (JFrame) r.getRoot();
@@ -481,8 +481,8 @@ public class IssuesTest {
 	@Test
 	public void issue65_NPEOnKeyReleased() {
 		BuildResult r = new SwingYamlBuilder("JFrame(name=keyBug):") {{
-			___("- JLabel(name=bugLabel, text=\"Press key to illustrate the bug\")");
-			___("- JTextField(name=bugTextField, columns=15, onKeyReleased=hello)");
+			____("- JLabel(name=bugLabel, text=\"Press key to illustrate the bug\")");
+			____("- JTextField(name=bugTextField, columns=15, onKeyReleased=hello)");
 		}}.build(this);
 		
 		JTextField bugTextField = (JTextField) r.get("bugTextField");
@@ -496,15 +496,15 @@ public class IssuesTest {
 	@Test
 	public void issue71_UnderscoresInNames() {
 		BuildResult r = new SwingYamlBuilder("JFrame(name=keyBug):") {{
-			___("- JLabel(name=bug_label)");
-			___("- MigLayout: bug_label");
+			____("- JLabel(name=bug_label)");
+			____("- MigLayout: bug_label");
 		}}.build(this);
 	}
 	
 	@Test
 	public void issue72_JPasswordField() {
 		BuildResult r = new SwingYamlBuilder("JFrame(name=keyBug):") {{
-			___("- JPasswordField(name=password)");
+			____("- JPasswordField(name=password)");
 		}}.build(this);
 		
 		JPasswordField jpf = (JPasswordField) r.get("password");
@@ -515,10 +515,10 @@ public class IssuesTest {
 	@Test 
 	public void issue70_componentSizeInMigLayoutDsl() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JLabel(name=label)");
-			___("- JTextField(name=text)");
-			___("- JButton(name=button)");
-			___("- MigLayout: label< text> button|");
+			____("- JLabel(name=label)");
+			____("- JTextField(name=text)");
+			____("- JButton(name=button)");
+			____("- MigLayout: label< text> button|");
 		}}.build(this);
 	}
 	
@@ -537,9 +537,9 @@ public class IssuesTest {
 	@Test
 	public void issue66_parenthesesInCommentsCounted() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JLabel(name=label) #this is a comment)\"");
-			___("- JTextField(name=text)");
-			___("- JButton(name=button)");
+			____("- JLabel(name=label) #this is a comment)\"");
+			____("- JTextField(name=text)");
+			____("- JButton(name=button)");
 		}}.build(this);
 	}
 	
@@ -553,7 +553,7 @@ public class IssuesTest {
 	public void issue80_betterErrorOnMissingColon() {
 		try {
 			BuildResult r = new SwingYamlBuilder("JPanel(name=toto)") {{
-				___("- JLabel(name=label)");
+				____("- JLabel(name=label)");
 			}}.build(this);
 			
 		} catch (BuildException ex) {
@@ -566,16 +566,16 @@ public class IssuesTest {
 	public void issue109_actionNameNotFound() {
 		//no internationalization
 		BuildResult r = new SwingYamlBuilder("JFrame:") {{
-			___("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
-			___("- JPanel(name=ablageButtons):");
-			_____("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
+			____("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
+			____("- JPanel(name=ablageButtons):");
+			______("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
 		}}.build(this);
 		
 		//add internationalization without marking of invalid resources - should still work, with warnings
 		BuildResult r2 = new SwingYamlBuilder("JFrame:") {{
-			___("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
-			___("- JPanel(name=ablageButtons):");
-			_____("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
+			____("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
+			____("- JPanel(name=ablageButtons):");
+			______("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
 		}}.build(this, ResourceBundle.getBundle("TestResources"));
 
 		//add internationalization WITH marking of invalid resources - should still work, with warnings
@@ -583,9 +583,9 @@ public class IssuesTest {
 			SwingJavaBuilder.getConfig().setMarkInvalidResourceBundleKeys(true);
 			
 			BuildResult r3 = new SwingYamlBuilder("JFrame:") {{
-				___("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
-				___("- JPanel(name=ablageButtons):");
-				_____("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
+				____("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
+				____("- JPanel(name=ablageButtons):");
+				______("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
 			}}.build(this, ResourceBundle.getBundle("TestResources"));
 		} finally {
 			SwingJavaBuilder.getConfig().setMarkInvalidResourceBundleKeys(false);
@@ -601,9 +601,9 @@ public class IssuesTest {
 	@Test
 	public void issue114_supportYamlExtensionAndBackgroundDialog() throws BuildException, IOException {
 		BuildResult r = new SwingYamlBuilder("JFrame:") {{
-			___("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
-			___("- JPanel(name=ablageButtons):");
-			_____("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
+			____("- Action(name=ablageSearchAction, text=search.text, onAction=hello, enabled=true)");
+			____("- JPanel(name=ablageButtons):");
+			______("- JButton(name=ablageSearchButton, action=ablageSearchAction)");
 		}}.build(this);
 		BackgroundDialog dialog = new BackgroundDialog(new BackgroundEvent(this,this,true,  r), r);
 		
@@ -620,7 +620,7 @@ public class IssuesTest {
 	@Test
 	public void issue118_multipleEmbeddedStringWithSameValue() {
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- MigLayout: |\n            \"miles\" \"miles\"");
+			____("- MigLayout: |\n            \"miles\" \"miles\"");
 		}}.build(this);
 		
 		assertNotNull(r.get("lblMiles"));
@@ -635,7 +635,7 @@ public class IssuesTest {
 			SwingJavaBuilder.getConfig().forType(JLabel.class).defaultValue("font", "Monospace 14pt bold");
 			
 			BuildResult r = new SwingYamlBuilder("JPanel:") {{
-				___("- MigLayout: |\n            \"miles\" ");
+				____("- MigLayout: |\n            \"miles\" ");
 			}}.build(this);
 			
 			assertNotNull(r.entrySet().toString(),r.get("lblMiles"));

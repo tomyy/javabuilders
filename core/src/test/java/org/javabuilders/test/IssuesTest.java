@@ -17,7 +17,6 @@ import org.javabuilders.BuildException;
 import org.javabuilders.BuildResult;
 import org.javabuilders.Builder;
 import org.javabuilders.BuilderConfig;
-import org.javabuilders.InvalidPropertyException;
 import org.javabuilders.NamedObjectProperty;
 import org.javabuilders.exception.InvalidFormatException;
 import org.javabuilders.exception.UnrecognizedAliasException;
@@ -135,8 +134,8 @@ public class IssuesTest {
 		c.forType(JPanel.class).children(JPanel.class, 0, Integer.MAX_VALUE);
 		
 		YamlBuilder bld = new YamlBuilder("JPanel(name=panel):") {{
-				___("- GlobalBuildFilePanel(name=testPanel)");
-				___("- GlobalBuildFilePanel(name=testPanel2)");
+				____("- GlobalBuildFilePanel(name=testPanel)");
+				____("- GlobalBuildFilePanel(name=testPanel2)");
 		}};
 		BuildResult r = Builder.buildFromString(c, this, bld.toString());
 		

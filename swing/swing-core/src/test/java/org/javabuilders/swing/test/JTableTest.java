@@ -46,8 +46,8 @@ public class JTableTest {
 	public void testTableModel() {
 
 		BuildResult r = new SwingYamlBuilder("JScrollPane(name=pane):") {{
-			___("JTable(name=table):");
-			_____("- TestModel(name=model)");
+			____("JTable(name=table):");
+			______("- TestModel(name=model)");
 		}}.build(this);
 		
 		JTable table = (JTable) r.get("table");
@@ -67,8 +67,8 @@ public class JTableTest {
 	public void testTableModelInstantiated_Issue57() {
 
 		BuildResult r = new SwingYamlBuilder("JScrollPane(name=pane):") {{
-			___("JTable(name=table):");
-			_____("- TestModel(name=modelInstantiated)");
+			____("JTable(name=table):");
+			______("- TestModel(name=modelInstantiated)");
 		}}.build(this);
 		
 		JTable table = (JTable) r.get("table");
@@ -88,8 +88,8 @@ public class JTableTest {
 	@Test
 	public void testJComboBoxCellEditor() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=comboColumn):");
-			_____("- JComboBox(name=combobox)");
+			____("- TableColumn(name=comboColumn):");
+			______("- JComboBox(name=combobox)");
 		}}.build(this);
 		
 		JComboBox combobox = (JComboBox) r.get("combobox");
@@ -107,8 +107,8 @@ public class JTableTest {
 	@Test
 	public void testJCheckBoxCellEditor() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=column):");
-			_____("- JCheckBox(name=checkbox)");
+			____("- TableColumn(name=column):");
+			______("- JCheckBox(name=checkbox)");
 		}}.build(this);
 		
 		JCheckBox checkbox = (JCheckBox) r.get("checkbox");
@@ -126,8 +126,8 @@ public class JTableTest {
 	@Test
 	public void testJTextFieldEditor() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=column):");
-			_____("- JTextField(name=textfield)");
+			____("- TableColumn(name=column):");
+			______("- JTextField(name=textfield)");
 		}}.build(this);
 		
 		JTextField textfield = (JTextField) r.get("textfield");
@@ -144,8 +144,8 @@ public class JTableTest {
 	@Test
 	public void testCellEditor() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=column):");
-			_____("- TableTestCellEditor(name=cellEditor)");
+			____("- TableColumn(name=column):");
+			______("- TableTestCellEditor(name=cellEditor)");
 		}}.build(this);
 		
 		TableColumn comboColumn = (TableColumn) r.get("column");
@@ -161,8 +161,8 @@ public class JTableTest {
 	@Test
 	public void testCellRenderer() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=column):");
-			_____("- TableTestCellRenderer(name=cellRenderer)");
+			____("- TableColumn(name=column):");
+			______("- TableTestCellRenderer(name=cellRenderer)");
 		}}.build(this);
 		
 		TableColumn comboColumn = (TableColumn) r.get("column");
@@ -177,8 +177,8 @@ public class JTableTest {
 	@Test
 	public void testCellHeaderRenderer() {
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- TableColumn(name=column):");
-			_____("- TableTestCellRenderer(name=cellRenderer,forHeader=true)");
+			____("- TableColumn(name=column):");
+			______("- TableTestCellRenderer(name=cellRenderer,forHeader=true)");
 		}}.build(this);
 		
 		TableColumn comboColumn = (TableColumn) r.get("column");

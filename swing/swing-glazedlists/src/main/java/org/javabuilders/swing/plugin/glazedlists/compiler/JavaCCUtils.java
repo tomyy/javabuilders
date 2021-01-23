@@ -131,35 +131,35 @@ public class JavaCCUtils {
 			}
 		}
 		
-		bld._("public class %s implements %s<%s> {",name,Comparator.class.getName(),type.getName())
-			.___("public int compare(%1$s o1, %1$s o2) {",type.getName())
-			._____("int compare = 0;");
+		bld.__("public class %s implements %s<%s> {",name,Comparator.class.getName(),type.getName())
+			.____("public int compare(%1$s o1, %1$s o2) {",type.getName())
+			.______("int compare = 0;");
 
 		//create the comparison for each column
 		if (fields.length == 0) {
 			//build a Comparator against the class itself
-			bld._____("compare = o1.compareTo(o2);");
+			bld.______("compare = o1.compareTo(o2);");
 		} else {
 		
 			//build a Comparator against the class's fields
 			for(String col : fields) {
-				bld._____("if (compare == 0) {");
+				bld.______("if (compare == 0) {");
 	
 				String getter = PropertyUtils.getGetterName(col);
 				Class<?> returnType = PropertyUtils.verifyGetter(type, getter,short.class,Short.class,int.class,Integer.class,long.class,Long.class,double.class,
 						Double.class,String.class,char.class,Character.class,Comparable.class);
 				if (returnType.isPrimitive()) {
-					bld._______("compare = o1.%1$s() - o2.%1$s();",getter);
+					bld.________("compare = o1.%1$s() - o2.%1$s();",getter);
 				} else {
-					bld._______("compare = o1.%1$s().compareTo(o2.%1$s());",getter);
+					bld.________("compare = o1.%1$s().compareTo(o2.%1$s());",getter);
 				}
-				bld._____("}");
+				bld.______("}");
 			}
 			
 		}
-		bld._____("return compare;");
-		bld.___("}");
-		bld._("}");
+		bld.______("return compare;");
+		bld.____("}");
+		bld.__("}");
 		
 		try {
 			c = (Comparator<?>)compileAndInstantiate(name, bld.toString());

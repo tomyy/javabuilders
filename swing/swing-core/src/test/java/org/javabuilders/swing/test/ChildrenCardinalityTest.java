@@ -20,29 +20,29 @@ public class ChildrenCardinalityTest {
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJFrameInvalidObject() {
 		new SwingYamlBuilder("JFrame():") {{
-			___("- TableColumn()");
+			____("- TableColumn()");
 		}}.build(this);
 	}
 	
 	@Test
 	public void testScrollPane() {
 		new SwingYamlBuilder("JScrollPane():") {{
-			___("JPanel()");
+			____("JPanel()");
 		}}.build(this);
 	}
 
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testScrollPaneInvalidList() {
 		new SwingYamlBuilder("JScrollPane():") {{
-			___("- JPanel()");
+			____("- JPanel()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testScrollPaneInvalidListMoreThanOne() {
 		new SwingYamlBuilder("JScrollPane():") {{
-			___("- JPanel()");
-			___("- JPanel()");
+			____("- JPanel()");
+			____("- JPanel()");
 		}}.build(this);
 	}
 
@@ -55,15 +55,15 @@ public class ChildrenCardinalityTest {
 	@Test
 	public void testJSplitPaneWithOne() {
 		new SwingYamlBuilder("JSplitPane():") {{
-			___("- JPanel()");
+			____("- JPanel()");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJSplitPaneWithTwo() {
 		new SwingYamlBuilder("JSplitPane():") {{
-			___("- JPanel()");
-			___("- JPanel()");
+			____("- JPanel()");
+			____("- JPanel()");
 		}}.build(this);
 		
 	}
@@ -71,9 +71,9 @@ public class ChildrenCardinalityTest {
 	@Test(expected=ChildrenCardinalityException.class)	
 	public void testJSplitPaneWithInvalidThree() {
 		new SwingYamlBuilder("JSplitPane():") {{
-			___("- JPanel()");
-			___("- JPanel()");
-			___("- JPanel()");
+			____("- JPanel()");
+			____("- JPanel()");
+			____("- JPanel()");
 		}}.build(this);
 		
 	}
@@ -81,7 +81,7 @@ public class ChildrenCardinalityTest {
 	@Test(expected=ChildrenCardinalityException.class)	
 	public void testJSplitPaneWithInvalidChild() {
 		new SwingYamlBuilder("JSplitPane():") {{
-			___("JPanel()");
+			____("JPanel()");
 		}}.build(this);
 	}
 	
@@ -94,151 +94,151 @@ public class ChildrenCardinalityTest {
 	@Test
 	public void testJPanelWith1() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JButton()");
+			____("- JButton()");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJPanelWith2() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JButton()");
-			___("- JButton()");
+			____("- JButton()");
+			____("- JButton()");
 		}}.build(this);
 	}
 	
 	@Test
 	public void testJPanelWith3() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JButton()");
-			___("- JButton()");
-			___("- JButton()");
+			____("- JButton()");
+			____("- JButton()");
+			____("- JButton()");
 		}}.build(this);
 	}
 
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJPanelWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("JButton()");
+			____("JButton()");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJLabel() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JLabel()");
+			____("- JLabel()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJLabelWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JLabel():");
-			_____("- JLabel():");
+			____("- JLabel():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 	
 	@Test
 	public void testJButton() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JButton()");
+			____("- JButton()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJButtonWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JButton():");
-			_____("- JLabel():");
+			____("- JButton():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJTextField() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JTextField()");
+			____("- JTextField()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJTextFieldWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JTextField():");
-			_____("- JLabel():");
+			____("- JTextField():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJRadioButton() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JRadioButton()");
+			____("- JRadioButton()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJRadioButtonWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JRadioButton():");
-			_____("- JLabel():");
+			____("- JRadioButton():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJCheckBox() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JCheckBox()");
+			____("- JCheckBox()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJCheckBoxWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JCheckBox():");
-			_____("- JLabel():");
+			____("- JCheckBox():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJList() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JList()");
+			____("- JList()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJListWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JList():");
-			_____("- JLabel():");
+			____("- JList():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJProgressBar() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JProgressBar()");
+			____("- JProgressBar()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJProgressBarWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JProgressBar():");
-			_____("- JLabel():");
+			____("- JProgressBar():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 
 	@Test
 	public void testJSpinner() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JSpinner()");
+			____("- JSpinner()");
 		}}.build(this);
 	}
 	
 	@Test(expected=ChildrenCardinalityException.class)
 	public void testJSpinnerWithInvalidChild() {
 		new SwingYamlBuilder("JPanel():") {{
-			___("- JSpinner():");
-			_____("- JLabel():");
+			____("- JSpinner():");
+			______("- JLabel():");
 		}}.build(this);
 	}
 

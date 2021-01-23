@@ -14,27 +14,27 @@ public class ClassStringBuilder  {
 	/**
 	 * Adds a line at 1 level of indentation
 	 */
-	public ClassStringBuilder _(String template, Object...params) {
+	public ClassStringBuilder __(String template, Object...params) {
 		return add(0,template,params);
 	}
 	
-	public ClassStringBuilder ___(String template, Object...params) {
+	public ClassStringBuilder ____(String template, Object...params) {
 		return add(1,template,params);
 	}
 	
-	public ClassStringBuilder _____(String template, Object...params) {
+	public ClassStringBuilder ______(String template, Object...params) {
 		return add(2,template,params);
 	}
 	
-	public ClassStringBuilder _______(String template, Object...params) {
+	public ClassStringBuilder ________(String template, Object...params) {
 		return add(3,template,params);
 	}
 	
-	public ClassStringBuilder _________(String template, Object...params) {
+	public ClassStringBuilder __________(String template, Object...params) {
 		return add(4,template,params);
 	}
 	
-	public ClassStringBuilder ___________(String template, Object...params) {
+	public ClassStringBuilder ____________(String template, Object...params) {
 		return add(5,template,params);
 	}
 	

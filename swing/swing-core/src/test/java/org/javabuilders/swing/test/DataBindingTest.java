@@ -78,9 +78,9 @@ public class DataBindingTest {
 		panel.setBooks(books);
 		
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JComboBox(name=box)");
+			____("- JComboBox(name=box)");
 			bind();
-			___("- box.model: this.books");
+			____("- box.model: this.books");
 		}}.build(panel);
 		
 		JComboBox box = (JComboBox) r.get("box");
@@ -112,9 +112,9 @@ public class DataBindingTest {
 		panel.setBooks(books);
 		
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JList(name=list)");
+			____("- JList(name=list)");
 			bind();
-			___("- list.model: this.books");
+			____("- list.model: this.books");
 		}}.build(panel);
 		
 		JList list = (JList) r.get("list");
@@ -170,7 +170,7 @@ public class DataBindingTest {
 		panel.setBooks(books);
 		
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JTable(name=table)");
+			____("- JTable(name=table)");
 		}}.build(panel);
 
 		JTable table = (JTable) r.get("table");
@@ -215,9 +215,9 @@ public class DataBindingTest {
 		
 		@SuppressWarnings("unused")
 		BuildResult r = new SwingYamlBuilder("JPanel:") {{
-			___("- JTable(name=list)");
+			____("- JTable(name=list)");
 			bind();
-			___("- list.model: this.books(author,title,price)");
+			____("- list.model: this.books(author,title,price)");
 		}}.build(panel);
 		
 	}

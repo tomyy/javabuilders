@@ -87,35 +87,35 @@ public class CompilerUtils {
 			}
 		}
 		
-		bld.___("public int compare(Object ob1, Object ob2) {")
-			._____("int compare = 0;")
-			._____("%1$s o1 = (%1$s)ob1;",type.getName())
-			._____("%1$s o2 = (%1$s)ob2;",type.getName());
+		bld.____("public int compare(Object ob1, Object ob2) {")
+			.______("int compare = 0;")
+			.______("%1$s o1 = (%1$s)ob1;",type.getName())
+			.______("%1$s o2 = (%1$s)ob2;",type.getName());
 
 		//create the comparison for each column
 		if (fields.length == 0) {
 			//build a Comparator against the class itself
-			bld._____("compare = o1.compareTo(o2);");
+			bld.______("compare = o1.compareTo(o2);");
 		} else {
 		
 			//build a Comparator against the class's fields
 			for(String col : fields) {
-				bld._____("if (compare == 0) {");
+				bld.______("if (compare == 0) {");
 	
 				String getter = PropertyUtils.getGetterName(col);
 				Class<?> returnType = PropertyUtils.verifyGetter(type, getter,short.class,Short.class,int.class,Integer.class,long.class,Long.class,double.class,
 						Double.class,String.class,char.class,Character.class,Comparable.class);
 				if (returnType.isPrimitive()) {
-					bld._______("compare = o1.%1$s() - o2.%1$s();",getter);
+					bld.________("compare = o1.%1$s() - o2.%1$s();",getter);
 				} else {
-					bld._______("compare = o1.%1$s().compareTo(o2.%1$s());",getter);
+					bld.________("compare = o1.%1$s().compareTo(o2.%1$s());",getter);
 				}
-				bld._____("}");
+				bld.______("}");
 			}
 			
 		}
-		bld._____("return compare;");
-		bld.___("}");
+		bld.______("return compare;");
+		bld.____("}");
 		
 		try {
 			Class<?> comparatorClass = compile(name, bld.toString(),Object.class,Comparator.class);

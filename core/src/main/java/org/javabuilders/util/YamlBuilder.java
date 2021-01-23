@@ -26,7 +26,7 @@ public class YamlBuilder {
 	 * @param root Constructor
 	 */
 	public YamlBuilder(String root) {
-		_(root);
+		__(root);
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class YamlBuilder {
 	 * @param yamlLine
 	 * @return
 	 */
-	private YamlBuilder _(String yamlLine) {
+	private YamlBuilder __(String yamlLine) {
 		builder.append(yamlLine).append("\n");
 		return this;
 	}
@@ -43,72 +43,72 @@ public class YamlBuilder {
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder ___(String yamlLine) {
+	public YamlBuilder ____(String yamlLine) {
 		nest();
-		return _(yamlLine);
+		return __(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _____(String yamlLine) {
+	public YamlBuilder ______(String yamlLine) {
 		nest();
-		return ___(yamlLine);
+		return ____(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _______(String yamlLine) {
+	public YamlBuilder ________(String yamlLine) {
 		nest();
-		return _____(yamlLine);
+		return ______(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _________(String yamlLine) {
+	public YamlBuilder __________(String yamlLine) {
 		nest();
-		return _______(yamlLine);
+		return ________(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder ___________(String yamlLine) {
+	public YamlBuilder ____________(String yamlLine) {
 		nest();
-		return _________(yamlLine);
+		return __________(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _____________(String yamlLine) {
+	public YamlBuilder ______________(String yamlLine) {
 		nest();
-		return ___________(yamlLine);
+		return ____________(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _______________(String yamlLine) {
+	public YamlBuilder ________________(String yamlLine) {
 		nest();
-		return _____________(yamlLine);
+		return ______________(yamlLine);
 	}
 
 	/**
 	 * Insert nested
 	 * @return This
 	 */
-	public YamlBuilder _________________(String yamlLine) {
+	public YamlBuilder __________________(String yamlLine) {
 		nest();
-		return _______________(yamlLine);
+		return ________________(yamlLine);
 	}
 
 	

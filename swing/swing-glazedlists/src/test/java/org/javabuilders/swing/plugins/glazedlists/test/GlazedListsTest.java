@@ -20,7 +20,6 @@ import ca.odell.glazedlists.BasicEventList;
 import ca.odell.glazedlists.EventList;
 import ca.odell.glazedlists.SortedList;
 import ca.odell.glazedlists.swing.EventComboBoxModel;
-import ca.odell.glazedlists.swing.EventListModel;
 import ca.odell.glazedlists.swing.EventTableModel;
 
 /**
@@ -253,7 +252,7 @@ public class GlazedListsTest {
 		assertNull(defectsSorted);
 		
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- EventTableModel(name=tablemodel, source=defects, columns=[id,type,summary],sort=multi)");
+			____("- EventTableModel(name=tablemodel, source=defects, columns=[id,type,summary],sort=multi)");
 		}}.build(this);
 		
 		assertNotNull(defectsSorted);
@@ -276,7 +275,7 @@ public class GlazedListsTest {
 		SortedList<Defect> origReference = defectsSorted;
 		
 		BuildResult r = new SwingYamlBuilder("JTable(name=table):") {{
-			___("- EventTableModel(name=tablemodel, source=defects, columns=[id,type,summary],sort=multi)");
+			____("- EventTableModel(name=tablemodel, source=defects, columns=[id,type,summary],sort=multi)");
 		}}.build(this);
 		
 		assertNotNull(defectsSorted);
